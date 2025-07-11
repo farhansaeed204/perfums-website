@@ -36,7 +36,7 @@ const womensPerfumes = [
   },
 ];
 
-const whatsappNumber = "03402558440"; // Replace with your WhatsApp number including country code without '+' sign
+const whatsappNumber = "+923402558440"; // Replace with your WhatsApp number including country code without '+' sign
 
 function openWhatsApp(productName: string) {
   const message = `Hello, I am interested in buying the perfume: ${productName}`;
