@@ -219,10 +219,10 @@ export default function Home() {
   className="mb-16 bg-gray-800 rounded-xl shadow-lg p-8 max-w-4xl mx-auto mt-4"
 >
             <h2 className="text-4xl font-bold mb-6 text-gray-100 text-center tracking-wide font-serif">
-              About Luxe Perfumes
+              About SK Fragnance
             </h2>
               <p className="text-gray-300 text-center text-lg leading-relaxed font-serif">
-              Luxe Perfumes is dedicated to providing high-quality, unique fragrances for
+              SK Fargnance is dedicated to providing high-quality, unique fragrances for
               both men and women. Our carefully curated collections are designed to
               evoke emotions and create lasting impressions. Experience the essence
               of elegance and charm with every scent.
@@ -232,11 +232,11 @@ export default function Home() {
         <footer className="bg-gray-900 border-t border-gray-700 py-8 mt-16">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center px-6">
             <p className="text-gray-400 mb-6 sm:mb-0 font-serif">
-              &copy; {new Date().getFullYear()} Luxe Perfumes. All rights reserved.
+              &copy; {new Date().getFullYear()} Sk Fargnance. All rights reserved.
             </p>
             <div className="flex gap-8">
               <a
-                href="https://instagram.com/luxeperfumes"
+                href="https://www.instagram.com/skfragrances_?igsh=aHA5cTJ0MmJ1a3U5"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-pink-600 hover:text-pink-400 transition duration-300"
