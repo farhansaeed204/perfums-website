@@ -52,12 +52,13 @@ export default function Home() {
   const allPerfumes = useMemo(() => [...mensPerfumes, ...womensPerfumes], []);
 
   // Filter perfumes based on search term (case insensitive)
-  const filteredPerfumes = useMemo(() => {
-    if (!searchTerm.trim()) return allPerfumes;
-    return allPerfumes.filter((perfume) =>
-      perfume.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }, [searchTerm, allPerfumes]);
+  // Removed unused filteredPerfumes to fix ESLint error
+  // const filteredPerfumes = useMemo(() => {
+  //   if (!searchTerm.trim()) return allPerfumes;
+  //   return allPerfumes.filter((perfume) =>
+  //     perfume.name.toLowerCase().includes(searchTerm.toLowerCase())
+  //   );
+  // }, [searchTerm, allPerfumes]);
 
   // Suggestions for autocomplete dropdown (limit to 5)
   const suggestions = useMemo(() => {
@@ -138,9 +139,7 @@ export default function Home() {
 
           {/* Men's Collection */}
           <section className="mb-16 px-2 sm:px-0">
-            <h2 className="text-2xl xs:text-3xl font-semibold mb-8 text-gray-800 tracking-wide font-serif">
-              Men's Collection
-            </h2>
+              <h2 className="text-2xl xs:text-3xl font-semibold mb-8 text-gray-800 tracking-wide font-serif">Men&apos;s Collection</h2>
             <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 xs:gap-8">
               {mensPerfumes.map((perfume) => (
                 <div
@@ -178,9 +177,7 @@ export default function Home() {
 
           {/* Women's Collection */}
           <section className="px-2 sm:px-0">
-            <h2 className="text-2xl xs:text-3xl font-semibold mb-8 text-gray-800 tracking-wide font-serif">
-              Women's Collection
-            </h2>
+            <h2 className="text-2xl xs:text-3xl font-semibold mb-8 text-gray-800 tracking-wide font-serif">Women&apos;s Collection</h2>
             <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 xs:gap-8">
               {womensPerfumes.map((perfume) => (
                 <div
@@ -224,7 +221,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-6 text-gray-100 text-center tracking-wide font-serif">
               About Luxe Perfumes
             </h2>
-            <p className="text-gray-300 text-center text-lg leading-relaxed font-serif">
+              <p className="text-gray-300 text-center text-lg leading-relaxed font-serif">
               Luxe Perfumes is dedicated to providing high-quality, unique fragrances for
               both men and women. Our carefully curated collections are designed to
               evoke emotions and create lasting impressions. Experience the essence
