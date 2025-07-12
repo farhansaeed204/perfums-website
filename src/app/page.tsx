@@ -153,7 +153,7 @@ export default function Home() {
               height={60}
               className="mb-0 mt-4 object-contain"
             />
-            <h1 className="text-lg xs:text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-wide font-serif">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-wide font-serif whitespace-nowrap">
               SK Fragnance
             </h1>
           </div>
@@ -175,7 +175,8 @@ export default function Home() {
                         }
                       }, 0);
                     }}
-                    className="text-white focus:outline-none absolute right-0 top-1 font-bold"
+                  className="text-white focus:outline-none absolute right-0 font-bold"
+                  style={{ top: '-6px' }}
                   >
                     {/* Search icon SVG */}
                     <svg
