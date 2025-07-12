@@ -175,8 +175,8 @@ export default function Home() {
                         }
                       }, 0);
                     }}
-                  className="text-white focus:outline-none absolute right-0 font-bold"
-                  style={{ top: '-6px' }}
+                  className="text-white focus:outline-none absolute right-0 top-1 font-bold"
+                  style={undefined}
                   >
                     {/* Search icon SVG */}
                     <svg
