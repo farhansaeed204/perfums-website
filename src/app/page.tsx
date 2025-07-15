@@ -11,19 +11,48 @@ import React, { useState, useMemo, useEffect } from "react";
 const mensPerfumes = [
   {
     id: 1,
-    name: "Ocean Breeze",
-    image: "/pictures/mens1.png",
+    name: "NO.04",
+    image: "/pictures/mens1.jpg",
     price: 2000,
     discountPrice: 1500,
     description: "A fresh and invigorating scent with aquatic and citrus notes, perfect for everyday wear.",
+    bottleSize: 90, // bottle size in ml
   },
   {
     id: 2,
-    name: "Mountain Mist",
-    image: "/pictures/mens2.png",
+    name: "BOOST",
+    image: "/pictures/mens2.jpg",
     price: 1800,
     discountPrice: 1400,
     description: "An earthy and woody fragrance with hints of pine and musk, ideal for outdoor enthusiasts.",
+    bottleSize: 90, // bottle size in ml
+  },
+  {
+    id: 3,
+    name: "BOLD",
+    image: "/pictures/mens3.jpg",
+    price: 1800,
+    discountPrice: 1400,
+    // description: "An earthy and woody fragrance with hints of pine and musk, ideal for outdoor enthusiasts.",
+    bottleSize: 90, // bottle size in ml
+  },
+  {
+    id: 4,
+    name: "SAPPHIRE",
+    image: "/pictures/mens4.jpg",
+    price: 1800,
+    discountPrice: 1400,
+    // description: "An earthy and woody fragrance with hints of pine and musk, ideal for outdoor enthusiasts.",
+    bottleSize: 90, // bottle size in ml
+  },
+  {
+    id: 5,
+    name: "DIVE",
+    image: "/pictures/mens5.jpg",
+    price: 1800,
+    discountPrice: 1400,
+    // description: "An earthy and woody fragrance with hints of pine and musk, ideal for outdoor enthusiasts.",
+    bottleSize: 90, // bottle size in ml
   },
 ];
 
@@ -31,19 +60,30 @@ const mensPerfumes = [
 const womensPerfumes = [
   {
     id: 1,
-    name: "Rose Blossom",
-    image: "/pictures/womens1.png",
+    name: "LOVE",
+    image: "/pictures/womens1.jpg",
     price: 2200,
     discountPrice: 1700,
     description: "A romantic floral scent with rich rose and jasmine notes, perfect for special occasions.",
+    bottleSize: 90, // bottle size in ml
   },
   {
     id: 2,
-    name: "Lavender Dream",
-    image: "/pictures/womens2.png",
+    name: "SHE",
+    image: "/pictures/womens2.jpg",
     price: 2100,
     discountPrice: 1600,
     description: "A calming and soothing fragrance with lavender and vanilla undertones, great for relaxation.",
+    bottleSize: 90, // bottle size in ml
+  },
+  {
+    id: 3,
+    name: "BLOOM",
+    image: "/pictures/womens3.jpg",
+    price: 1800,
+    discountPrice: 1400,
+    // description: "An earthy and woody fragrance with hints of pine and musk, ideal for outdoor enthusiasts.",
+    bottleSize: 50, // bottle size in ml
   },
 ];
 
@@ -99,6 +139,7 @@ export default function Home() {
   // Effect to handle window resize and toggle mobile view state
   useEffect(() => {
     function handleResize() {
+      // Use 800px breakpoint as per user feedback
       setIsMobileView(window.innerWidth < 800);
       if (window.innerWidth >= 800) {
         setShowMobileSearch(false); // Hide mobile search on large screens
@@ -149,78 +190,40 @@ export default function Home() {
             <Image
               src="/pictures/logo.png"
               alt="Fragnace Logo"
-              width={60}
-              height={60}
-              className="mb-0 mt-4 object-contain"
+              width={50}
+              height={50}
+              className="mb-0 mt-2 object-contain"
             />
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-wide font-serif whitespace-nowrap">
               SK Fragnance
             </h1>
           </div>
           {/* Search input or icon */}
-          <div className="relative w-full max-w-xs sm:max-w-sm mt-4">
-            {isMobileView ? (
-              <>
-                {!showMobileSearch ? (
-                  <button
-                    id="mobile-search-button"
-                    aria-label="Open search"
-                    onClick={() => {
-                      setShowMobileSearch(true);
-                      // Focus the input immediately after showing it
-                      setTimeout(() => {
-                        const input = document.getElementById("mobile-search-input");
-                        if (input) {
-                          input.focus();
-                        }
-                      }, 0);
-                    }}
-                  className="text-white focus:outline-none absolute right-0 top-1 font-bold"
-                  style={undefined}
-                  >
-                    {/* Search icon SVG */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z"
-                      />
-                    </svg>
-                  </button>
-                ) : (
-                  <>
-                    <input
-                      id="mobile-search-input"
-                      type="text"
-                      placeholder="Search perfumes..."
-                      className="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-800 text-white text-sm focus:outline-none focus:ring-4 focus:ring-green-500 shadow-md transition duration-300"
-                      value={searchTerm}
-                      onChange={(e) => {
-                        setSearchTerm(e.target.value);
-                        setShowSuggestions(true);
-                      }}
-                      onFocus={() => setShowSuggestions(true)}
-                      onBlur={() => {
-                        // Delay hiding suggestions to allow click
-                        setTimeout(() => setShowSuggestions(false), 150);
-                      }}
-                    />
+          <div className="relative w-full max-w-xs sm:max-w-sm mt-8 flex items-end">
+            <div className="relative w-full">
+              {isMobileView ? (
+                <>
+                  {!showMobileSearch ? (
                     <button
-                      aria-label="Close search"
-                      onClick={() => setShowMobileSearch(false)}
-                      className="absolute top-2 right-2 text-white focus:outline-none"
+                      id="mobile-search-button"
+                      aria-label="Open search"
+                      onClick={() => {
+                        setShowMobileSearch(true);
+                        // Focus the input immediately after showing it
+                        setTimeout(() => {
+                          const input = document.getElementById("mobile-search-input");
+                          if (input) {
+                            input.focus();
+                          }
+                        }, 0);
+                      }}
+                      className="text-white focus:outline-none absolute right-0 top-0 font-bold"
+                      style={undefined}
                     >
-                      {/* Close icon SVG */}
+                      {/* Search icon SVG */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
+                        className="h-6 w-6"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -229,43 +232,85 @@ export default function Home() {
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
+                          d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z"
                         />
                       </svg>
                     </button>
-                  </>
-                )}
-              </>
-            ) : (
-              <input
-                type="text"
-                placeholder="Search perfumes..."
-                className="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-800 text-white text-sm focus:outline-none focus:ring-4 focus:ring-green-500 shadow-md transition duration-300"
-                value={searchTerm}
-                onChange={(e) => {
-                  setSearchTerm(e.target.value);
-                  setShowSuggestions(true);
-                }}
-                onFocus={() => setShowSuggestions(true)}
-                onBlur={() => {
-                  // Delay hiding suggestions to allow click
-                  setTimeout(() => setShowSuggestions(false), 150);
-                }}
-              />
-            )}
-            {showSuggestions && suggestions.length > 0 && (
-              <ul className="absolute z-20 w-full bg-gray-800 border border-gray-600 rounded-lg mt-1 max-h-52 overflow-auto shadow-xl">
-                {suggestions.map((suggestion) => (
-                  <li
-                    key={suggestion.id + suggestion.name}
-                    className="px-5 py-3 cursor-pointer text-white hover:bg-green-700 transition duration-200 rounded-lg"
-                    onMouseDown={() => handleSuggestionClick(suggestion.name)}
-                  >
-                    {suggestion.name}
-                  </li>
-                ))}
-              </ul>
-            )}
+                  ) : (
+                    <>
+                      <input
+                        id="mobile-search-input"
+                        type="text"
+                        placeholder="Search perfumes..."
+                        className="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-800 text-white text-sm focus:outline-none focus:ring-4 focus:ring-green-500 shadow-md transition duration-300"
+                        value={searchTerm}
+                        onChange={(e) => {
+                          setSearchTerm(e.target.value);
+                          setShowSuggestions(true);
+                        }}
+                        onFocus={() => setShowSuggestions(true)}
+                        onBlur={() => {
+                          // Delay hiding suggestions to allow click
+                          setTimeout(() => setShowSuggestions(false), 150);
+                        }}
+                      />
+                      <button
+                        aria-label="Close search"
+                        onClick={() => setShowMobileSearch(false)}
+                        className="absolute top-2 right-2 text-white focus:outline-none"
+                      >
+                        {/* Close icon SVG */}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Search perfumes..."
+                    className="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-800 text-white text-sm focus:outline-none focus:ring-4 focus:ring-green-500 shadow-md transition duration-300"
+                    value={searchTerm}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                      setShowSuggestions(true);
+                    }}
+                    onFocus={() => setShowSuggestions(true)}
+                    onBlur={() => {
+                      // Delay hiding suggestions to allow click
+                      setTimeout(() => setShowSuggestions(false), 150);
+                    }}
+                  />
+                  {showSuggestions && suggestions.length > 0 && (
+                    <ul className="absolute z-50 w-full bg-gray-800 border border-gray-600 rounded-lg mt-1 max-h-52 overflow-auto shadow-xl">
+                      {suggestions.map((suggestion) => (
+                        <li
+                          key={suggestion.id + suggestion.name}
+                          className="px-5 py-3 cursor-pointer text-white hover:bg-green-700 transition duration-200 rounded-lg"
+                          onMouseDown={() => handleSuggestionClick(suggestion.name)}
+                        >
+                          {suggestion.name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              )}
+            </div>
           </div>
         </div>
         <main className="max-w-6xl mx-auto px-2 sm:px-4">
@@ -297,8 +342,8 @@ export default function Home() {
                     <Image
                       src={perfume.image}
                       alt={perfume.name}
-                      width={140}
-                      height={140}
+                      width={200}
+                      height={200}
                       className="rounded-xl object-cover"
                     />
                     <h3 className="mt-4 text-base xs:text-lg sm:text-xl md:text-2xl font-semibold text-white font-serif">
@@ -307,12 +352,15 @@ export default function Home() {
                     <p className="mt-2 text-sm xs:text-base text-gray-300 font-serif">
                       {perfume.description}
                     </p>
+                    <p className="mt-1 text-sm xs:text-base text-gray-400 font-serif">
+                      Bottle Size: {perfume.bottleSize} ml
+                    </p>
                     <div className="mt-2 xs:mt-3">
                       <span className="text-gray-500 line-through mr-2 xs:mr-3 text-sm xs:text-lg">
-                        ₹{perfume.price}
+                        PKR: {perfume.price}
                       </span>
                       <span className="text-red-600 font-bold text-sm xs:text-lg">
-                        ₹{perfume.discountPrice}
+                        PKR: {perfume.discountPrice}
                       </span>
                     </div>
                     <button
@@ -340,8 +388,8 @@ export default function Home() {
                     <Image
                       src={perfume.image}
                       alt={perfume.name}
-                      width={140}
-                      height={140}
+                      width={200}
+                      height={200}
                       className="rounded-xl object-cover"
                     />
                     <h3 className="mt-4 text-base xs:text-lg sm:text-xl md:text-2xl font-semibold text-white font-serif">
@@ -350,12 +398,15 @@ export default function Home() {
                     <p className="mt-2 text-sm xs:text-base text-gray-300 font-serif">
                       {perfume.description}
                     </p>
+                    <p className="mt-1 text-sm xs:text-base text-gray-400 font-serif">
+                      Bottle Size: {perfume.bottleSize} ml
+                    </p>
                     <div className="mt-2 xs:mt-3">
                       <span className="text-gray-500 line-through mr-2 xs:mr-3 text-sm xs:text-lg">
-                        ₹{perfume.price}
+                        PKR: {perfume.price}
                       </span>
                       <span className="text-red-600 font-bold text-sm xs:text-lg">
-                        ₹{perfume.discountPrice}
+                        PKR: {perfume.discountPrice}
                       </span>
                     </div>
                     <button
@@ -371,14 +422,14 @@ export default function Home() {
           )}
 
           {/* About Section */}
-<section
-  id="about"
-  className="mb-16 bg-gray-800 rounded-xl shadow-lg p-8 max-w-4xl mx-auto mt-4"
->
+          <section
+            id="about"
+            className="mb-16 bg-gray-800 rounded-xl shadow-lg p-8 max-w-4xl mx-auto mt-4"
+          >
             <h2 className="text-4xl font-bold mb-6 text-gray-100 text-center tracking-wide font-serif">
               About SK Fragnance
             </h2>
-              <p className="text-gray-300 text-center text-lg leading-relaxed font-serif">
+            <p className="text-gray-300 text-center text-lg leading-relaxed font-serif">
               SK Fargnance is dedicated to providing high-quality, unique fragrances for
               both men and women. Our carefully curated collections are designed to
               evoke emotions and create lasting impressions. Experience the essence
